@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)https://dramartaclivati.rf.gd/?i=1 -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Centro Clivati | Dra. Marta Regina Clivati – Neurologia da Infância e da Adolescência</title>
+    <meta name="description" content="Neurologia da Infância e da Adolescência. Atendimento especializado em TEA, TDAH, epilepsia e dificuldades de aprendizagem em Cascavel - PR.">
+    <meta name="keywords" content="Neuropediatra Cascavel, Centro Clivati, Dra. Marta Regina Clivati, TEA, TDAH, Cascavel, Neurologia Infantil">
+    <meta name="author" content="Centro Clivati - Dra. Marta Regina Clivati">
+    
+    <!-- Fontes Sans-Serif Geométricas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* ---------- PALETA DE CORES ---------- */
+        :root {
+            --preto: #000000;
+            --preto-claro: #1a1a1a;
+            --cinza-escuro: #2d2d2d;
+            --cinza-medio: #555555;
+            --cinza-claro: #e0ddd0;
+            --branco: #F5F3E8;
+            --branco-puro: #FFFFFF;
+            --verde-destaque: #2ecc71;
+            --verde-escuro: #1a8c4a;
+            --purpura: #663366;
+            --purpura-escuro: #4a1a4a;
+            --cinza-borda: #c5c2b5;
+            --texto-escuro: #000000;
+            --google-blue: #4285F4;
+            --instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Inter', sans-serif;
+            background-color: var(--branco);
+            color: var(--preto);
+            line-height: 1.5;
+            overflow: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--preto);
+        }
+
+        /* ========== BARRA DE NAVEGAÇÃO FIXA ========== */
+        .navbar-fixa {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--branco);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.15);
+            z-index: 1000;
+            padding: 8px 0;
+            border-bottom: 2px solid var(--preto);
+        }
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .navbar-logo-texto {
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+        .logo-nome {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--preto);
+            letter-spacing: -0.5px;
+        }
+        .logo-especialidade {
+            display: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--preto);
+            transition: 0.2s;
+            padding: 6px 0;
+            position: relative;
+            cursor: pointer;
+        }
+        .nav-links a:hover {
+            color: var(--preto);
+            opacity: 0.6;
+        }
+        .nav-links a.ativo {
+            color: var(--preto);
+        }
+        .nav-links a.ativo::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--preto);
+            border-radius: 2px;
+        }
+        .btn-nav-agendar {
+            background: var(--verde-destaque);
+            color: var(--branco) !important;
+            padding: 5px 18px !important;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .btn-nav-agendar:hover {
+            background: var(--verde-escuro);
+            transform: scale(1.02);
+            opacity: 1;
+        }
+        .btn-nav-agendar.ativo::after {
+            display: none;
+        }
+
+        .nav-social {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-left: 20px;
+        }
+        .nav-social a {
+            color: var(--preto);
+            font-size: 1.1rem;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+        .nav-social a:hover {
+            color: var(--cinza-medio);
+            transform: scale(1.1);
+        }
+
+        /* ========== SISTEMA DE PÁGINAS/ABAS ========== */
+        .pages-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+            scroll-behavior: smooth;
+        }
+
+        .page.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 10;
+        }
+
+        .page-content {
+            min-height: 100%;
+            padding: 80px 0 50px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Cores das páginas */
+        .page-inicio { background: var(--branco); }
+        .page-sobre { background: var(--branco); }
+        .page-especialidades { background: #e8e5d8; }
+        .page-midia { background: var(--branco); }
+        .page-avaliacoes { background: #e8e5d8; }
+        .page-consultorio { background: #e8e5d8; }
+        .page-contato { background: var(--branco); }
+
+        .container-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            color: var(--preto);
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: var(--preto);
+            margin: 12px auto 0;
+            border-radius: 4px;
+        }
+
+        /* Botão CTA principal - verde */
+        .cta-principal {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--verde-destaque);
+            color: var(--branco);
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 25px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.35);
+        }
+        .cta-principal:hover {
+            background: var(--verde-escuro);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.45);
+        }
+
+        .hero-banner-principal {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -15px rgba(0,0,0,0.25);
+            transition: transform 0.3s ease;
+        }
+        .hero-banner-principal:hover {
+            transform: scale(1.01);
+        }
+        .hero-banner-principal img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .logo-principal {
+            display: none;
+        }
+
+        .titulo-principal {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--preto);
+            margin-bottom: 10px;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .card {
+            background: var(--branco);
+            border-radius: 28px;
+            padding: 28px 24px;
+            transition: all 0.25s ease;
+            border: 2px solid var(--preto);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.25);
+            border-color: var(--preto);
+        }
+        .card .icone { font-size: 2.8rem; margin-bottom: 16px; }
+        .card h3 { color: var(--preto); margin-bottom: 10px; }
+        .card p { color: var(--preto); }
+
+        /* Depoimentos */
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .depoimento-card {
+            background: var(--branco);
+            border-radius: 24px;
+            padding: 25px;
+            transition: all 0.25s ease;
+            border: 2px solid var(--preto);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .depoimento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 25px -10px rgba(0,0,0,0.2);
+        }
+        .depoimento-estrelas { color: #fbbc04; font-size: 1rem; margin-bottom: 12px; }
+        .depoimento-texto { font-size: 0.9rem; line-height: 1.5; color: var(--preto); margin-bottom: 15px; font-style: italic; }
+        .depoimento-autor { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+        .autor-avatar { width: 35px; height: 35px; background: var(--preto); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--branco); font-weight: 700; }
+        .autor-info { font-size: 0.85rem; }
+        .autor-nome { font-weight: 700; color: var(--preto); }
+        .autor-data { font-size: 0.7rem; color: var(--cinza-medio); }
+        .google-icon-small { color: var(--google-blue); margin-left: 5px; }
+
+        .midia-tag { background: var(--preto); color: var(--branco); padding: 4px 12px; font-size: 0.7rem; font-weight: 700; border-radius: 50px; display: inline-block; margin-bottom: 12px; }
+        .midia-link { color: var(--preto); font-weight: 700; text-decoration: none; display: inline-block; margin-top: 12px; }
+        .midia-link:hover { text-decoration: underline; opacity: 0.6; }
+
+        .mapa-container { margin-top: 20px; height: 250px; border-radius: 24px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 2px solid var(--preto); }
+        
+        .btn-contato-social {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--verde-destaque);
+            color: var(--branco) !important;
+            padding: 10px 26px;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-top: 15px;
+            transition: 0.2s;
+            text-decoration: none;
+            box-shadow: 0 3px 10px rgba(46, 204, 113, 0.3);
+        }
+        .btn-contato-social:hover {
+            background: var(--verde-escuro);
+            transform: scale(1.02);
+        }
+        
+        .contato-colunas { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px; }
+        form { background: var(--branco); padding: 28px; border-radius: 28px; border: 2px solid var(--preto); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        input, textarea { width: 100%; padding: 12px 16px; margin-bottom: 15px; border: 2px solid var(--preto); border-radius: 28px; font-family: 'Poppins', sans-serif; font-size: 0.9rem; background: var(--branco); color: var(--preto); }
+        input:focus, textarea:focus { outline: none; border-color: var(--preto); box-shadow: 0 0 0 3px rgba(0,0,0,0.15); }
+        .btn-submit { background: var(--verde-destaque); color: var(--branco); border: none; padding: 12px; border-radius: 50px; font-weight: 700; cursor: pointer; width: 100%; font-family: 'Poppins', sans-serif; font-size: 0.9rem; box-shadow: 0 3px 10px rgba(46, 204, 113, 0.3); }
+        .btn-submit:hover { background: var(--verde-escuro); }
+        
+        /* FOOTER EM PÚRPURA */
+        footer { 
+            background: var(--purpura); 
+            color: var(--branco); 
+            text-align: center; 
+            padding: 30px 20px; 
+            margin-top: 50px; 
+            border-radius: 20px; 
+            border: 2px solid var(--branco);
+        }
+        footer p { color: var(--branco); }
+        footer a { color: var(--branco); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        
+        .form-status { display: none; padding: 10px; border-radius: 24px; margin-bottom: 20px; font-size: 0.85rem; }
+        .form-status.success { background: #D4EDDA; color: #155724; display: block; border: 1px solid #c3e6cb; }
+        .form-status.error { background: #F8D7DA; color: #721C24; display: block; border: 1px solid #f5c6cb; }
+        .inline-icon { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 15px; }
+        .crm-info { display: inline-block; background: rgba(0,0,0,0.08); padding: 6px 18px; border-radius: 40px; margin-top: 15px; font-weight: 600; color: var(--preto); border: 1px solid var(--preto); }
+
+        /* ESTILO PARA A PÁGINA SOBRE COM FOTO */
+        .sobre-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--branco);
+            border-radius: 28px;
+            padding: 35px 40px;
+            border: 2px solid var(--preto);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .sobre-foto {
+            flex-shrink: 0;
+            width: 280px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid var(--preto);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .sobre-foto img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .sobre-texto {
+            flex: 1;
+        }
+
+        .sobre-texto p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--preto);
+            margin-bottom: 16px;
+        }
+
+        .sobre-texto p:last-child {
+            margin-bottom: 0;
+        }
+
+        .sobre-titulo-nome {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--preto);
+            margin-bottom: 12px;
+        }
+
+        /* ESTILO PARA O CARDS DE PARTICIPAÇÃO NA PÁGINA INICIAL */
+        .participacao-card {
+            max-width: 900px;
+            margin: 30px auto 0 auto;
+            background: var(--branco);
+            border-radius: 28px;
+            padding: 30px 35px;
+            border: 2px solid var(--preto);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            text-align: left;
+        }
+
+        .participacao-card .participacao-foto {
+            flex-shrink: 0;
+            width: 200px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--preto);
+        }
+
+        .participacao-card .participacao-foto img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .participacao-card .participacao-texto {
+            flex: 1;
+        }
+
+        .participacao-card .participacao-texto p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--preto);
+            margin-bottom: 12px;
+        }
+
+        .participacao-card .participacao-texto p:last-child {
+            margin-bottom: 0;
+        }
+
+        .participacao-card .participacao-tag {
+            display: inline-block;
+            background: var(--purpura);
+            color: var(--branco);
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .participacao-card .participacao-hashtags {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: var(--purpura);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .participacao-card {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+                text-align: center;
+            }
+            .participacao-card .participacao-foto {
+                width: 160px;
+            }
+            .sobre-container {
+                flex-direction: column;
+                align-items: center;
+                padding: 25px 20px;
+            }
+            .sobre-foto {
+                width: 200px;
+            }
+            .sobre-texto p {
+                font-size: 0.95rem;
+            }
+            .sobre-titulo-nome {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .contato-colunas { grid-template-columns: 1fr; }
+            .nav-links { gap: 16px; }
+            .nav-links a { font-size: 0.75rem; }
+            .nav-social { margin-left: 10px; gap: 10px; }
+            .logo-nome { font-size: 1rem; }
+            .titulo-principal { font-size: 2rem; }
+        }
+        @media (max-width: 600px) {
+            .section-title { font-size: 1.5rem; }
+            .hero-banner-principal { border-radius: 20px; }
+            .nav-links { gap: 8px; flex-wrap: wrap; justify-content: center; }
+            .nav-links a { font-size: 0.6rem; }
+            .btn-nav-agendar { padding: 3px 8px !important; font-size: 0.6rem; }
+            .logo-nome { font-size: 0.9rem; }
+            .titulo-principal { font-size: 1.6rem; }
+            .sobre-container { padding: 20px 16px; }
+            .sobre-foto { width: 160px; }
+            .participacao-card { padding: 16px; }
+            .participacao-card .participacao-foto { width: 130px; }
+            .participacao-card .participacao-texto p { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="navbar-fixa">
+<div class="navbar-container">
+<div class="navbar-logo-texto"><span class="logo-nome">Centro Clivati</span> <span class="logo-especialidade"></span></div>
+<ul class="nav-links">
+<li><a class="nav-link ativo" data-page="inicio">Início</a></li>
+<li><a class="nav-link" data-page="sobre">Sobre</a></li>
+<li><a class="nav-link" data-page="especialidades">Especialidades</a></li>
+<li><a class="nav-link" data-page="midia">Mídia</a></li>
+<li><a class="nav-link" data-page="avaliacoes">Depoimentos</a></li>
+<li><a class="nav-link" data-page="consultorio">Consultório</a></li>
+<li><a class="btn-nav-agendar nav-link" data-page="contato">Agendar</a></li>
+</ul>
+<div class="nav-social"><a href="https://wa.me/554532242151" target="_blank" title="WhatsApp" rel="noopener"><i class="fab fa-whatsapp"></i></a> <a href="https://www.instagram.com/dra.martaclivati" target="_blank" title="Instagram" rel="noopener"><i class="fab fa-instagram"></i></a></div>
+</div>
+</div>
+<div class="pages-container"><!-- PÁGINA INÍCIO -->
+<div id="page-inicio" class="page page-inicio active">
+<div class="page-content">
+<div class="container-page">
+<div class="hero-banner-principal"><img src="banner1.png" alt="Dra. Marta Regina Clivati - Banner principal"></div>
+<div style="text-align: center; margin-top: 40px;">
+<h1 class="titulo-principal">Centro Clivati</h1>
+<p style="font-size: 1.1rem; max-width: 700px; margin: 10px auto 0 auto; color: var(--preto); font-weight: 500;">Neurologia da Infância e da Adolescência com excelência técnica e acolhimento humano.</p>
+
+<!-- CARDS DE PARTICIPAÇÃO - Substitui as postagens do Instagram -->
+<div class="participacao-card">
+    <div class="participacao-foto">
+        <img src="1.png" alt="Participação na Semana Acadêmica de Fisioterapia e Terapia Ocupacional">
+    </div>
+    <div class="participacao-texto">
+        <div class="participacao-tag"><i class="fas fa-calendar-alt"></i> Semana Acadêmica 2026</div>
+        <p><strong>Participação na Semana Acadêmica de Fisioterapia e Terapia Ocupacional</strong>, a convite da Coordenadora <strong>dra. Leda Walker</strong>, onde ocorreram importantes discussões sobre reabilitação, funcionalidade e inclusão. Lembrando da época em que fui médica de Centro de Reabilitação – FAG, e professora do Curso de Fisioterapia.</p>
+        <p>A programação contou com palestra sobre <strong>Transtornos do neurodesenvolvimento</strong>, com foco no <strong>TEA</strong> (transtorno do espectro autista).</p>
+        <div class="participacao-hashtags">
+            <i class="fab fa-instagram"></i> #Neuropediatria #Neurologiainfantil #AtualizaçãoCientífica #Neurodesenvolvimento #TEA #TDAH #DesenvolvimentoInfantil
+        </div>
+    </div>
+</div>
+
+<button class="cta-principal" onclick="switchPage('contato')"><i class="fas fa-calendar-check"></i> Agendar Consulta</button>
+<div class="crm-info" style="margin-top: 25px;"><i class="fas fa-id-card"></i> CRM-PR 13396</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- PÁGINA SOBRE -->
+<div id="page-sobre" class="page page-sobre">
+<div class="page-content">
+<div class="container-page">
+<h2 class="section-title">Sobre</h2>
+
+<div class="sobre-container">
+    <!-- FOTO -->
+    <div class="sobre-foto">
+        <img src="STE_3812.jpg" alt="Dra. Marta Regina Clivati - Neurologia da Infância e Adolescência">
+    </div>
+    
+    <!-- TEXTO -->
+    <div class="sobre-texto">
+        <div class="sobre-titulo-nome">Dra. Marta Regina Clivati</div>
+        
+        <p><strong>Dra. Marta Regina Clivati</strong> é médica formada em Medicina na Universidade Federal do Paraná (UFPR), com formação em Neurologia da Infância e Adolescência pela Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (USP).</p>
+        
+        <p>Título de especialista em Neurologia Pediátrica e em Pediatria pela Associação Médica Brasileira (AMB). Mestrado em Ciências Médicas (USP) na área de Patologia Experimental e Comparada.</p>
+        
+        <p>Especialização em Tratamento do Espectro do Autismo, em Psiquiatria da Infância e Adolescência, em Neurodesenvolvimento e seus transtornos, em Análise aplicada do comportamento para autismo e deficiência intelectual e em neuromodulação voltada aos transtornos do neurodesenvolvimento.</p>
+        
+        <p><strong>Professora convidada</strong> em cursos de Pós-graduação em áreas da Saúde e Educação.</p>
+    </div>
+</div>
+
+<div style="text-align: center; margin-top: 30px;">
+    <div class="crm-info"><i class="fas fa-id-card"></i> CRM-PR 13396</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- PÁGINA ESPECIALIDADES -->
+<div id="page-especialidades" class="page page-especialidades">
+<div class="page-content">
+<div class="container-page">
+<h2 class="section-title">Especialidades clínicas</h2>
+<div class="cards-grid">
+<div class="card">
+<div class="icone">🧠</div>
+<h3>Autismo (TEA)</h3>
+<p>Avaliação criteriosa e plano terapêutico multidisciplinar baseado em evidências.</p>
+</div>
+<div class="card">
+<div class="icone">⚡</div>
+<h3>TDAH</h3>
+<p>Tratamento integrando orientação familiar, suporte escolar e farmacológico quando necessário.</p>
+</div>
+<div class="card">
+<div class="icone">🧬</div>
+<h3>Epilepsia infantil</h3>
+<p>Controle de crises com medicina personalizada e mínimo impacto no desenvolvimento.</p>
+</div>
+<div class="card">
+<div class="icone">📚</div>
+<h3>Dificuldades de aprendizagem</h3>
+<p>Avaliação neuropsicológica de dislexia, discalculia e transtornos do processamento.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- PÁGINA MÍDIA -->
+<div id="page-midia" class="page page-midia">
+<div class="page-content">
+<div class="container-page">
+<h2 class="section-title">Participações na mídia, podcasts e congressos</h2>
+<div class="cards-grid">
+<div class="card"><span class="midia-tag"><i class="fas fa-tv"></i> CATVE</span>
+<h3>Programa "Entre Nós"</h3>
+<p>Seletividade alimentar no TEA – causas sensoriais e abordagem multidisciplinar.</p>
+<a href="https://www.catve.com/noticia/31/444522/seletividade-alimentar-no-autismo-e-tema-do-programa-entre-nos-com-murilo-cardoso-na-catve" target="_blank" class="midia-link" rel="noopener">Ver matéria →</a></div>
+<div class="card"><span class="midia-tag"><i class="fas fa-podcast"></i> Podcast</span>
+<h3>Desquebrando a Cabeça</h3>
+<p>Episódio sobre Autismo Nível 3 de suporte: desafios e acolhimento.</p>
+<a href="#" class="midia-link" onclick="alert('Em breve link oficial')">Ouvir trecho →</a></div>
+<div class="card"><span class="midia-tag"><i class="fas fa-chalkboard-user"></i> Congresso</span>
+<h3>4º Congresso Autismo em Debate (2026)</h3>
+<p>Palestra "Perspectiva médica e clínica no TEA" – Francisco Beltrão/PR.</p>
+<a href="https://www.autismoemdebate.com.br/" target="_blank" class="midia-link" rel="noopener">Site do evento →</a></div>
+<div class="card"><span class="midia-tag"><i class="fas fa-medal"></i> Aprender Criança 2025</span>
+<h3>Excelência em Neuropediatria</h3>
+<p>Painel sobre Direito Educacional, Neurociências e Medicina integrada.</p>
+<a href="https://aprendercrianca.com.br/" target="_blank" class="midia-link" rel="noopener">Site oficial →</a></div>
+<div class="card"><span class="midia-tag"><i class="fas fa-users"></i> Seminário Oeste Paraná</span>
+<h3>"TDAH no TEA"</h3>
+<p>Abordagem da comorbidade entre os dois transtornos do neurodesenvolvimento.</p>
+</div>
+<div class="card"><span class="midia-tag"><i class="fas fa-newspaper"></i> Artigos científicos</span>
+<h3>Produção em neurogenética</h3>
+<p>Estudos sobre biomarcadores precoces e avanços terapêuticos.</p>
+<a href="https://independent.academia.edu/MartaClivati" target="_blank" class="midia-link" rel="noopener">Ver artigos →</a></div>
+</div>
+<footer>
+<p><i class="fas fa-brain"></i> CENTRO CLIVATI – NEUROLOGIA DA INFÂNCIA E DA ADOLESCÊNCIA</p>
+<p style="font-size: 0.75rem; margin-top: 6px;">Dra. Marta Regina Clivati | Neurologia da Infância e da Adolescência | Ma. Ciências Médicas - USP</p>
+<p style="margin-top: 12px; font-size: 0.7rem;">© 2026 – Atendimento humanizado em Cascavel - PR</p>
+</footer></div>
+</div>
+</div>
+
+<!-- PÁGINA DEPOIMENTOS -->
+<div id="page-avaliacoes" class="page page-avaliacoes">
+<div class="page-content">
+<div class="container-page">
+<h2 class="section-title">Depoimentos</h2>
+<div class="depoimentos-grid" id="depoimentos-container"></div>
+<footer>
+<p><i class="fas fa-brain"></i> CENTRO CLIVATI – NEUROLOGIA DA INFÂNCIA E DA ADOLESCÊNCIA</p>
+<p style="font-size: 0.75rem; margin-top: 6px;">Dra. Marta Regina Clivati | Neurologia da Infância e da Adolescência | Ma. Ciências Médicas - USP</p>
+<p style="margin-top: 12px; font-size: 0.7rem;">© 2026 – Atendimento humanizado em Cascavel - PR</p>
+</footer></div>
+</div>
+</div>
+
+<!-- PÁGINA CONSULTÓRIO -->
+<div id="page-consultorio" class="page page-consultorio">
+<div class="page-content">
+<div class="container-page">
+<h2 class="section-title">Nosso consultório</h2>
+<div style="max-width: 700px; margin: 0 auto;">
+<div class="card" style="text-align: left;">
+<div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;"><i class="fas fa-location-dot" style="font-size: 32px; color: var(--preto);"></i>
+<h3 style="margin: 0;">Unidade Cascavel</h3>
+</div>
+<p><i class="fas fa-location-dot"></i> Rua Minas Gerais, 1686 - Centro, Cascavel - PR, 85812-010</p>
+<p><i class="fas fa-phone"></i> (45) 3224-2151</p>
+<p><i class="fab fa-whatsapp"></i> WhatsApp: (45) 9 9999-2151</p>
+<div class="mapa-container"><iframe style="width: 100%; height: 100%; border: 0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.123456789012!2d-53.456789!3d-24.957890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDU3JzI4LjQiUyA1M8KwMjcnMjQuNCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890" allowfullscreen="allowfullscreen" loading="lazy"></iframe></div>
+</div>
+<p style="text-align: center; margin-top: 25px; font-weight: 500;">🗓️ Atendimento mediante agendamento – segunda a sexta, 8h às 18h.</p>
+</div>
+<footer>
+<p><i class="fas fa-brain"></i> CENTRO CLIVATI – NEUROLOGIA DA INFÂNCIA E DA ADOLESCÊNCIA</p>
+<p style="font-size: 0.75rem; margin-top: 6px;">Dra. Marta Regina Clivati | Neurologia da Infância e da Adolescência | Ma. Ciências Médicas - USP</p>
+<p style="margin-top: 12px; font-size: 0.7rem;">© 2026 – Atendimento humanizado em Cascavel - PR</p>
+</footer></div>
+</div>
+</div>
+
+<!-- PÁGINA CONTATO -->
+<div id="page-contato" class="page page-contato">
+<div class="page-content">
+<div class="container-page">
+<h2 class="section-title">Agendamento e contato</h2>
+<div class="contato-colunas">
+<div>
+<h3><i class="fas fa-comments"></i> Canais diretos</h3>
+<p>Escolha a forma mais prática para agendar sua consulta ou esclarecer dúvidas.</p>
+<a href="https://wa.me/554532242151" target="_blank" class="btn-contato-social" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a><br><a href="https://www.instagram.com/dra.martaclivati" target="_blank" class="btn-contato-social" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
+<div style="margin-top: 35px;">
+<div class="inline-icon"><i class="fas fa-envelope" style="font-size: 24px; color: var(--preto);"></i><strong>contato@dramartaclivati.com.br</strong></div>
+<p><i class="fas fa-clock"></i> Resposta em até 24h úteis</p>
+</div>
+</div>
+<div>
+<div id="status-box" class="form-status"></div>
+<form id="contact-form" onsubmit="handleFormSubmit(event)"><input type="text" id="form-name" placeholder="Nome completo" required=""> <input type="email" id="form-email" placeholder="Seu e-mail" required=""> <input type="tel" id="form-phone" placeholder="WhatsApp (opcional)"> <textarea id="form-msg" placeholder="Descreva sua necessidade ou dúvida" rows="4" required=""></textarea> <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Enviar mensagem</button></form></div>
+</div>
+<footer>
+<p><i class="fas fa-brain"></i> CENTRO CLIVATI – NEUROLOGIA DA INFÂNCIA E DA ADOLESCÊNCIA</p>
+<p style="font-size: 0.75rem; margin-top: 6px;">Dra. Marta Regina Clivati | Neurologia da Infância e da Adolescência | Ma. Ciências Médicas - USP</p>
+<p style="margin-top: 12px; font-size: 0.7rem;">© 2026 – Atendimento humanizado em Cascavel - PR</p>
+</footer></div>
+</div>
+</div>
+</div>
+
+<script>
+    // Depoimentos
+    const depoimentos = [
+        { nome: "Ana Paula Silva", texto: "Dra. Marta é simplesmente excepcional! Atendimento humano, diagnóstico preciso e acompanhamento maravilhoso. Meu filho evoluiu muito desde que começamos o tratamento. Recomendo de olhos fechados!", data: "15/05/2026", estrelas: 5 },
+        { nome: "Carlos Eduardo M.", texto: "Profissional extremamente competente e dedicada. Senti confiança desde a primeira consulta. Explica tudo com clareza e dá atenção a cada detalhe. Nota 10!", data: "03/05/2026", estrelas: 5 },
+        { nome: "Mariana Oliveira", texto: "Melhor neuropediatra que já conhecemos. Atendimento acolhedor, explicações detalhadas e tratamento eficaz. Meu filho com TEA teve um progresso incrível. Gratidão eterna!", data: "28/04/2026", estrelas: 5 },
+        { nome: "Roberto Alves", texto: "Excelente profissional! Diagnóstico assertivo e tratamento personalizado. A Dra. Marta está sempre atualizada e demonstra profundo conhecimento na área. Super recomendo.", data: "20/04/2026", estrelas: 5 },
+        { nome: "Fernanda Lima", texto: "Atendimento humanizado e de qualidade. A Dra. Marta conquistou a confiança da nossa família. Meu filho adora as consultas e nós nos sentimos seguros. Muito obrigada!", data: "10/04/2026", estrelas: 5 },
+        { nome: "Paulo Ricardo", texto: "Profissional nota 1000! Tem um carinho enorme com as crianças e trata os pais com muita atenção. Diagnóstico preciso e conduta excelente. Recomendo fortemente.", data: "05/04/2026", estrelas: 5 }
+    ];
+
+    function renderizarDepoimentos() {
+        const container = document.getElementById('depoimentos-container');
+        if (!container) return;
+        container.innerHTML = '';
+        depoimentos.forEach(depoimento => {
+            const card = document.createElement('div');
+            card.className = 'depoimento-card';
+            const iniciais = depoimento.nome.split(' ').map(n => n[0]).join('').substring(0, 2);
+            card.innerHTML = `
+                <div class="depoimento-estrelas">★★★★★ <span style="color: var(--cinza-medio); font-size: 0.7rem;">5,0</span></div>
+                <p class="depoimento-texto">"${depoimento.texto}"</p>
+                <div class="depoimento-autor">
+                    <div class="autor-avatar">${iniciais}</div>
+                    <div class="autor-info">
+                        <div class="autor-nome">${depoimento.nome} <i class="fab fa-google google-icon-small"></i></div>
+                        <div class="autor-data">${depoimento.data}</div>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    const pages = {
+        inicio: document.getElementById('page-inicio'),
+        sobre: document.getElementById('page-sobre'),
+        especialidades: document.getElementById('page-especialidades'),
+        midia: document.getElementById('page-midia'),
+        avaliacoes: document.getElementById('page-avaliacoes'),
+        consultorio: document.getElementById('page-consultorio'),
+        contato: document.getElementById('page-contato')
+    };
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.switchPage = function(pageId) {
+        Object.values(pages).forEach(page => { if(page) page.classList.remove('active'); });
+        if(pages[pageId]) { 
+            pages[pageId].classList.add('active'); 
+            pages[pageId].scrollTop = 0;
+            if(pageId === 'avaliacoes') renderizarDepoimentos();
+        }
+        navLinks.forEach(link => {
+            link.classList.remove('ativo');
+            if(link.getAttribute('data-page') === pageId) link.classList.add('ativo');
+        });
+    };
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const pageId = this.getAttribute('data-page');
+            if(pageId && pages[pageId]) window.switchPage(pageId);
+        });
+    });
+
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        const name = document.getElementById('form-name').value.trim();
+        const email = document.getElementById('form-email').value.trim();
+        const msg = document.getElementById('form-msg').value.trim();
+        const statusBox = document.getElementById('status-box');
+        if(!name || !email || !msg) {
+            statusBox.textContent = "⚠️ Preencha nome, e-mail e mensagem.";
+            statusBox.className = "form-status error";
+            statusBox.style.display = "block";
+            setTimeout(() => statusBox.style.display = "none", 4000);
+            return;
+        }
+        statusBox.innerHTML = `✅ Obrigado, ${name}! Sua mensagem foi enviada. Retornaremos em breve.`;
+        statusBox.className = "form-status success";
+        statusBox.style.display = "block";
+        document.getElementById('contact-form').reset();
+        setTimeout(() => statusBox.style.display = "none", 6000);
+    }
+
+    // Inicializa a página
+    window.switchPage('inicio');
+</script>
+
+</body></html>
