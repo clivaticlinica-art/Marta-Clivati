@@ -277,6 +277,380 @@
             display: block;
         }
 
+        /* ========== CARROSSEL MINIATURAS COM AUTOPLAY ========== */
+        .carrossel-miniaturas {
+            width: 100%;
+            max-width: 1100px;
+            margin: 30px auto 0 auto;
+            position: relative;
+            background: var(--branco);
+            border-radius: 24px;
+            padding: 20px 15px;
+            border: 2px solid var(--preto);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .carrossel-miniaturas .titulo-secao {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--cinza-medio);
+            margin-bottom: 15px;
+            padding-left: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .carrossel-miniaturas .titulo-secao i {
+            color: var(--purpura);
+            font-size: 1rem;
+        }
+
+        .carrossel-miniaturas .titulo-secao .status-autoplay {
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: var(--verde-destaque);
+            background: rgba(46, 204, 113, 0.15);
+            padding: 2px 12px;
+            border-radius: 20px;
+            margin-left: auto;
+        }
+
+        .carrossel-thumb-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .carrossel-thumb-track {
+            display: flex;
+            gap: 12px;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 4px 0;
+        }
+
+        .carrossel-thumb-item {
+            flex: 0 0 calc(16.666% - 10px);
+            min-width: 140px;
+            aspect-ratio: 1/1;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            background: var(--preto-claro);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .carrossel-thumb-item:hover {
+            transform: scale(1.03);
+            border-color: var(--purpura);
+            box-shadow: 0 8px 25px rgba(102, 51, 102, 0.25);
+            z-index: 2;
+        }
+
+        .carrossel-thumb-item.ativo {
+            border-color: var(--purpura);
+            box-shadow: 0 0 0 3px var(--purpura), 0 8px 25px rgba(102, 51, 102, 0.3);
+        }
+
+        .carrossel-thumb-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carrossel-thumb-item .thumb-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 8px 10px 6px;
+            color: var(--branco);
+            font-size: 0.55rem;
+            font-weight: 600;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .carrossel-thumb-item:hover .thumb-overlay {
+            opacity: 1;
+        }
+
+        .carrossel-thumb-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.7);
+            color: var(--branco);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+            border: 2px solid rgba(255,255,255,0.15);
+        }
+
+        .carrossel-thumb-btn:hover {
+            background: var(--purpura);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .carrossel-thumb-btn-prev {
+            left: 4px;
+        }
+
+        .carrossel-thumb-btn-next {
+            right: 4px;
+        }
+
+        /* Indicadores de progresso do autoplay */
+        .carrossel-progresso {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 15px;
+            padding: 0 5px;
+            flex-wrap: wrap;
+        }
+
+        .carrossel-progresso .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--cinza-claro);
+            border: 1px solid var(--cinza-borda);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .carrossel-progresso .dot.ativo {
+            background: var(--purpura);
+            border-color: var(--purpura);
+            transform: scale(1.2);
+        }
+
+        .carrossel-progresso .dot.passou {
+            background: var(--cinza-medio);
+            border-color: var(--cinza-medio);
+        }
+
+        /* Botão pausar/continuar */
+        .btn-autoplay-toggle {
+            background: none;
+            border: none;
+            color: var(--cinza-medio);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+            padding: 2px 10px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-autoplay-toggle:hover {
+            color: var(--preto);
+            background: rgba(0,0,0,0.05);
+        }
+
+        /* ========== MODAL DE VISUALIZAÇÃO AMPLIADA ========== */
+        .carrossel-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.92);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            backdrop-filter: blur(8px);
+            cursor: pointer; /* Cursor de clique no fundo */
+        }
+
+        .carrossel-modal.ativo {
+            display: flex;
+        }
+
+        .carrossel-modal-content {
+            max-width: 80%;
+            max-height: 85vh;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+            border: 3px solid rgba(255,255,255,0.1);
+            position: relative;
+            cursor: default; /* Cursor normal sobre a imagem */
+        }
+
+        .carrossel-modal-content img {
+            width: 100%;
+            height: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        .carrossel-modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: rgba(255,255,255,0.15);
+            color: var(--branco);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+            backdrop-filter: blur(4px);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .carrossel-modal-close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .carrossel-modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.12);
+            color: var(--branco);
+            border: 2px solid rgba(255,255,255,0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carrossel-modal-nav:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .carrossel-modal-nav-prev {
+            left: -70px;
+        }
+
+        .carrossel-modal-nav-next {
+            right: -70px;
+        }
+
+        .carrossel-modal-contador {
+            position: absolute;
+            bottom: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 1024px) {
+            .carrossel-thumb-item {
+                flex: 0 0 calc(20% - 10px);
+                min-width: 120px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carrossel-thumb-item {
+                flex: 0 0 calc(33.333% - 10px);
+                min-width: 100px;
+            }
+            .carrossel-miniaturas {
+                padding: 15px 10px;
+                border-radius: 16px;
+            }
+            .carrossel-modal-content {
+                max-width: 95%;
+            }
+            .carrossel-modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            .carrossel-modal-nav-prev {
+                left: -50px;
+            }
+            .carrossel-modal-nav-next {
+                right: -50px;
+            }
+            .carrossel-modal-close {
+                top: -45px;
+                width: 38px;
+                height: 38px;
+                font-size: 1.2rem;
+            }
+            .carrossel-thumb-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+            .carrossel-miniaturas .titulo-secao .status-autoplay {
+                font-size: 0.5rem;
+                padding: 1px 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carrossel-thumb-item {
+                flex: 0 0 calc(50% - 8px);
+                min-width: 80px;
+            }
+            .carrossel-thumb-track {
+                gap: 8px;
+            }
+            .carrossel-miniaturas .titulo-secao {
+                font-size: 0.7rem;
+            }
+            .carrossel-modal-nav-prev {
+                left: -35px;
+            }
+            .carrossel-modal-nav-next {
+                right: -35px;
+            }
+            .carrossel-modal-nav {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+            .carrossel-progresso .dot {
+                width: 6px;
+                height: 6px;
+            }
+        }
+
         .logo-principal {
             display: none;
         }
@@ -345,8 +719,89 @@
         .midia-link { color: var(--preto); font-weight: 700; text-decoration: none; display: inline-block; margin-top: 12px; }
         .midia-link:hover { text-decoration: underline; opacity: 0.6; }
 
-        .mapa-container { margin-top: 20px; height: 250px; border-radius: 24px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 2px solid var(--preto); }
-        
+        .mapa-container { 
+            margin-top: 20px; 
+            height: 300px; 
+            border-radius: 24px; 
+            overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+            border: 2px solid var(--preto);
+            position: relative;
+        }
+        .mapa-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Botão Abrir no Google Maps */
+        .btn-maps {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--google-blue);
+            color: var(--branco);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: 0.3s ease;
+            text-decoration: none;
+            margin-top: 15px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.35);
+        }
+
+        .btn-maps:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(66, 133, 244, 0.5);
+        }
+
+        .btn-maps i {
+            font-size: 1.2rem;
+        }
+
+        /* Informações de localização */
+        .info-localizacao {
+            background: var(--branco);
+            border-radius: 20px;
+            padding: 20px 25px;
+            border: 2px solid var(--preto);
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px 30px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-localizacao .item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--preto);
+        }
+
+        .info-localizacao .item i {
+            color: var(--purpura);
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .info-localizacao .item a {
+            color: var(--preto);
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .info-localizacao .item a:hover {
+            color: var(--purpura);
+            text-decoration: underline;
+        }
+
         .btn-contato-social {
             display: inline-flex;
             align-items: center;
@@ -532,6 +987,18 @@
                 font-size: 1.2rem;
                 text-align: center;
             }
+            .mapa-container {
+                height: 200px;
+            }
+            .info-localizacao {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px;
+            }
+            .btn-maps {
+                font-size: 0.85rem;
+                padding: 10px 20px;
+            }
         }
 
         @media (max-width: 992px) {
@@ -555,6 +1022,9 @@
             .participacao-card { padding: 16px; }
             .participacao-card .participacao-foto { width: 130px; }
             .participacao-card .participacao-texto p { font-size: 0.9rem; }
+            .mapa-container {
+                height: 180px;
+            }
         }
     </style>
 </head>
@@ -579,11 +1049,131 @@
 <div class="page-content">
 <div class="container-page">
 <div class="hero-banner-principal"><img src="banner1.png" alt="Dra. Marta Regina Clivati - Banner principal"></div>
+
+<!-- ========== CARROSSEL MINIATURAS COM AUTOPLAY ========== -->
+<div class="carrossel-miniaturas" id="carrosselContainer">
+    <div class="titulo-secao">
+        <i class="fas fa-images"></i> GALERIA DE FOTOS 
+        <span class="status-autoplay" id="autoplayStatus">
+            <i class="fas fa-play"></i> Rodando
+        </span>
+        <button class="btn-autoplay-toggle" id="autoplayToggle" title="Pausar/Continuar">
+            <i class="fas fa-pause" id="autoplayIcon"></i>
+        </button>
+    </div>
+    
+    <div class="carrossel-thumb-wrapper" id="thumbWrapper">
+        <div class="carrossel-thumb-track" id="thumbTrack">
+            <div class="carrossel-thumb-item" data-index="0" onclick="openModal(0)">
+                <img src="fotoscongresso/1 (1).jpg" alt="Foto 1">
+                <div class="thumb-overlay">Foto 1</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="1" onclick="openModal(1)">
+                <img src="fotoscongresso/1 (2).jpg" alt="Foto 2">
+                <div class="thumb-overlay">Foto 2</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="2" onclick="openModal(2)">
+                <img src="fotoscongresso/1 (3).jpg" alt="Foto 3">
+                <div class="thumb-overlay">Foto 3</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="3" onclick="openModal(3)">
+                <img src="fotoscongresso/1 (4).jpg" alt="Foto 4">
+                <div class="thumb-overlay">Foto 4</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="4" onclick="openModal(4)">
+                <img src="fotoscongresso/1 (5).jpg" alt="Foto 5">
+                <div class="thumb-overlay">Foto 5</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="5" onclick="openModal(5)">
+                <img src="fotoscongresso/1 (6).jpg" alt="Foto 6">
+                <div class="thumb-overlay">Foto 6</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="6" onclick="openModal(6)">
+                <img src="fotoscongresso/1 (7).jpg" alt="Foto 7">
+                <div class="thumb-overlay">Foto 7</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="7" onclick="openModal(7)">
+                <img src="fotoscongresso/1 (8).jpg" alt="Foto 8">
+                <div class="thumb-overlay">Foto 8</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="8" onclick="openModal(8)">
+                <img src="fotoscongresso/1 (9).jpg" alt="Foto 9">
+                <div class="thumb-overlay">Foto 9</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="9" onclick="openModal(9)">
+                <img src="fotoscongresso/1 (10).jpg" alt="Foto 10">
+                <div class="thumb-overlay">Foto 10</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="10" onclick="openModal(10)">
+                <img src="fotoscongresso/1 (11).jpg" alt="Foto 11">
+                <div class="thumb-overlay">Foto 11</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="11" onclick="openModal(11)">
+                <img src="fotoscongresso/1 (12).jpg" alt="Foto 12">
+                <div class="thumb-overlay">Foto 12</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="12" onclick="openModal(12)">
+                <img src="fotoscongresso/1 (13).jpg" alt="Foto 13">
+                <div class="thumb-overlay">Foto 13</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="13" onclick="openModal(13)">
+                <img src="fotoscongresso/1 (14).jpg" alt="Foto 14">
+                <div class="thumb-overlay">Foto 14</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="14" onclick="openModal(14)">
+                <img src="fotoscongresso/1 (15).jpg" alt="Foto 15">
+                <div class="thumb-overlay">Foto 15</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="15" onclick="openModal(15)">
+                <img src="fotoscongresso/1 (16).jpg" alt="Foto 16">
+                <div class="thumb-overlay">Foto 16</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="16" onclick="openModal(16)">
+                <img src="fotoscongresso/1 (17).jpg" alt="Foto 17">
+                <div class="thumb-overlay">Foto 17</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="17" onclick="openModal(17)">
+                <img src="fotoscongresso/1 (18).jpg" alt="Foto 18">
+                <div class="thumb-overlay">Foto 18</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="18" onclick="openModal(18)">
+                <img src="fotoscongresso/1 (19).jpg" alt="Foto 19">
+                <div class="thumb-overlay">Foto 19</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="19" onclick="openModal(19)">
+                <img src="fotoscongresso/1 (20).jpg" alt="Foto 20">
+                <div class="thumb-overlay">Foto 20</div>
+            </div>
+            <div class="carrossel-thumb-item" data-index="20" onclick="openModal(20)">
+                <img src="fotoscongresso/1 (21).jpg" alt="Foto 21">
+                <div class="thumb-overlay">Foto 21</div>
+            </div>
+        </div>
+        
+        <button class="carrossel-thumb-btn carrossel-thumb-btn-prev" id="thumbPrev" aria-label="Anterior">❮</button>
+        <button class="carrossel-thumb-btn carrossel-thumb-btn-next" id="thumbNext" aria-label="Próximo">❯</button>
+    </div>
+
+    <!-- Indicadores de progresso -->
+    <div class="carrossel-progresso" id="progressoIndicadores"></div>
+</div>
+
+<!-- ========== MODAL DE VISUALIZAÇÃO AMPLIADA ========== -->
+<div class="carrossel-modal" id="carrosselModal" onclick="closeModalOnBackground(event)">
+    <button class="carrossel-modal-close" onclick="closeModal()">✕</button>
+    <button class="carrossel-modal-nav carrossel-modal-nav-prev" onclick="event.stopPropagation(); changeModalImage(-1);">❮</button>
+    <div class="carrossel-modal-content" id="modalContent" onclick="event.stopPropagation();">
+        <img id="modalImage" src="" alt="Foto ampliada">
+    </div>
+    <button class="carrossel-modal-nav carrossel-modal-nav-next" onclick="event.stopPropagation(); changeModalImage(1);">❯</button>
+    <div class="carrossel-modal-contador" id="modalCounter">1 / 21</div>
+</div>
+
 <div style="text-align: center; margin-top: 40px;">
 <h1 class="titulo-principal">Centro Clivati</h1>
 <p style="font-size: 1.1rem; max-width: 700px; margin: 10px auto 0 auto; color: var(--preto); font-weight: 500;">Neurologia da Infância e da Adolescência com excelência técnica e acolhimento humano.</p>
 
-<!-- CARDS DE PARTICIPAÇÃO - Substitui as postagens do Instagram -->
+<!-- CARDS DE PARTICIPAÇÃO -->
 <div class="participacao-card">
     <div class="participacao-foto">
         <img src="1.png" alt="Participação na Semana Acadêmica de Fisioterapia e Terapia Ocupacional">
@@ -612,21 +1202,14 @@
 <h2 class="section-title">Sobre</h2>
 
 <div class="sobre-container">
-    <!-- FOTO -->
     <div class="sobre-foto">
         <img src="STE_3812.jpg" alt="Dra. Marta Regina Clivati - Neurologia da Infância e Adolescência">
     </div>
-    
-    <!-- TEXTO -->
     <div class="sobre-texto">
         <div class="sobre-titulo-nome">Dra. Marta Regina Clivati</div>
-        
         <p><strong>Dra. Marta Regina Clivati</strong> é médica formada em Medicina na Universidade Federal do Paraná (UFPR), com formação em Neurologia da Infância e Adolescência pela Faculdade de Medicina de Ribeirão Preto da Universidade de São Paulo (USP).</p>
-        
         <p>Título de especialista em Neurologia Pediátrica e em Pediatria pela Associação Médica Brasileira (AMB). Mestrado em Ciências Médicas (USP) na área de Patologia Experimental e Comparada.</p>
-        
         <p>Especialização em Tratamento do Espectro do Autismo, em Psiquiatria da Infância e Adolescência, em Neurodesenvolvimento e seus transtornos, em Análise aplicada do comportamento para autismo e deficiência intelectual e em neuromodulação voltada aos transtornos do neurodesenvolvimento.</p>
-        
         <p><strong>Professora convidada</strong> em cursos de Pós-graduação em áreas da Saúde e Educação.</p>
     </div>
 </div>
@@ -645,26 +1228,10 @@
 <div class="container-page">
 <h2 class="section-title">Especialidades clínicas</h2>
 <div class="cards-grid">
-<div class="card">
-<div class="icone">🧠</div>
-<h3>Autismo (TEA)</h3>
-<p>Avaliação criteriosa e plano terapêutico multidisciplinar baseado em evidências.</p>
-</div>
-<div class="card">
-<div class="icone">⚡</div>
-<h3>TDAH</h3>
-<p>Tratamento integrando orientação familiar, suporte escolar e farmacológico quando necessário.</p>
-</div>
-<div class="card">
-<div class="icone">🧬</div>
-<h3>Epilepsia infantil</h3>
-<p>Controle de crises com medicina personalizada e mínimo impacto no desenvolvimento.</p>
-</div>
-<div class="card">
-<div class="icone">📚</div>
-<h3>Dificuldades de aprendizagem</h3>
-<p>Avaliação neuropsicológica de dislexia, discalculia e transtornos do processamento.</p>
-</div>
+<div class="card"><div class="icone">🧠</div><h3>Autismo (TEA)</h3><p>Avaliação criteriosa e plano terapêutico multidisciplinar baseado em evidências.</p></div>
+<div class="card"><div class="icone">⚡</div><h3>TDAH</h3><p>Tratamento integrando orientação familiar, suporte escolar e farmacológico quando necessário.</p></div>
+<div class="card"><div class="icone">🧬</div><h3>Epilepsia infantil</h3><p>Controle de crises com medicina personalizada e mínimo impacto no desenvolvimento.</p></div>
+<div class="card"><div class="icone">📚</div><h3>Dificuldades de aprendizagem</h3><p>Avaliação neuropsicológica de dislexia, discalculia e transtornos do processamento.</p></div>
 </div>
 </div>
 </div>
@@ -676,30 +1243,12 @@
 <div class="container-page">
 <h2 class="section-title">Participações na mídia, podcasts e congressos</h2>
 <div class="cards-grid">
-<div class="card"><span class="midia-tag"><i class="fas fa-tv"></i> CATVE</span>
-<h3>Programa "Entre Nós"</h3>
-<p>Seletividade alimentar no TEA – causas sensoriais e abordagem multidisciplinar.</p>
-<a href="https://www.catve.com/noticia/31/444522/seletividade-alimentar-no-autismo-e-tema-do-programa-entre-nos-com-murilo-cardoso-na-catve" target="_blank" class="midia-link" rel="noopener">Ver matéria →</a></div>
-<div class="card"><span class="midia-tag"><i class="fas fa-podcast"></i> Podcast</span>
-<h3>Desquebrando a Cabeça</h3>
-<p>Episódio sobre Autismo Nível 3 de suporte: desafios e acolhimento.</p>
-<a href="#" class="midia-link" onclick="alert('Em breve link oficial')">Ouvir trecho →</a></div>
-<div class="card"><span class="midia-tag"><i class="fas fa-chalkboard-user"></i> Congresso</span>
-<h3>4º Congresso Autismo em Debate (2026)</h3>
-<p>Palestra "Perspectiva médica e clínica no TEA" – Francisco Beltrão/PR.</p>
-<a href="https://www.autismoemdebate.com.br/" target="_blank" class="midia-link" rel="noopener">Site do evento →</a></div>
-<div class="card"><span class="midia-tag"><i class="fas fa-medal"></i> Aprender Criança 2025</span>
-<h3>Excelência em Neuropediatria</h3>
-<p>Painel sobre Direito Educacional, Neurociências e Medicina integrada.</p>
-<a href="https://aprendercrianca.com.br/" target="_blank" class="midia-link" rel="noopener">Site oficial →</a></div>
-<div class="card"><span class="midia-tag"><i class="fas fa-users"></i> Seminário Oeste Paraná</span>
-<h3>"TDAH no TEA"</h3>
-<p>Abordagem da comorbidade entre os dois transtornos do neurodesenvolvimento.</p>
-</div>
-<div class="card"><span class="midia-tag"><i class="fas fa-newspaper"></i> Artigos científicos</span>
-<h3>Produção em neurogenética</h3>
-<p>Estudos sobre biomarcadores precoces e avanços terapêuticos.</p>
-<a href="https://independent.academia.edu/MartaClivati" target="_blank" class="midia-link" rel="noopener">Ver artigos →</a></div>
+<div class="card"><span class="midia-tag"><i class="fas fa-tv"></i> CATVE</span><h3>Programa "Entre Nós"</h3><p>Seletividade alimentar no TEA – causas sensoriais e abordagem multidisciplinar.</p><a href="https://www.catve.com/noticia/31/444522/seletividade-alimentar-no-autismo-e-tema-do-programa-entre-nos-com-murilo-cardoso-na-catve" target="_blank" class="midia-link" rel="noopener">Ver matéria →</a></div>
+<div class="card"><span class="midia-tag"><i class="fas fa-podcast"></i> Podcast</span><h3>Desquebrando a Cabeça</h3><p>Episódio sobre Autismo Nível 3 de suporte: desafios e acolhimento.</p><a href="#" class="midia-link" onclick="alert('Em breve link oficial')">Ouvir trecho →</a></div>
+<div class="card"><span class="midia-tag"><i class="fas fa-chalkboard-user"></i> Congresso</span><h3>4º Congresso Autismo em Debate (2026)</h3><p>Palestra "Perspectiva médica e clínica no TEA" – Francisco Beltrão/PR.</p><a href="https://www.autismoemdebate.com.br/" target="_blank" class="midia-link" rel="noopener">Site do evento →</a></div>
+<div class="card"><span class="midia-tag"><i class="fas fa-medal"></i> Aprender Criança 2025</span><h3>Excelência em Neuropediatria</h3><p>Painel sobre Direito Educacional, Neurociências e Medicina integrada.</p><a href="https://aprendercrianca.com.br/" target="_blank" class="midia-link" rel="noopener">Site oficial →</a></div>
+<div class="card"><span class="midia-tag"><i class="fas fa-users"></i> Seminário Oeste Paraná</span><h3>"TDAH no TEA"</h3><p>Abordagem da comorbidade entre os dois transtornos do neurodesenvolvimento.</p></div>
+<div class="card"><span class="midia-tag"><i class="fas fa-newspaper"></i> Artigos científicos</span><h3>Produção em neurogenética</h3><p>Estudos sobre biomarcadores precoces e avanços terapêuticos.</p><a href="https://independent.academia.edu/MartaClivati" target="_blank" class="midia-link" rel="noopener">Ver artigos →</a></div>
 </div>
 <footer>
 <p><i class="fas fa-brain"></i> CENTRO CLIVATI – NEUROLOGIA DA INFÂNCIA E DA ADOLESCÊNCIA</p>
@@ -728,17 +1277,56 @@
 <div class="page-content">
 <div class="container-page">
 <h2 class="section-title">Nosso consultório</h2>
-<div style="max-width: 700px; margin: 0 auto;">
-<div class="card" style="text-align: left;">
-<div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;"><i class="fas fa-location-dot" style="font-size: 32px; color: var(--preto);"></i>
-<h3 style="margin: 0;">Unidade Cascavel</h3>
+<div style="max-width: 800px; margin: 0 auto;">
+
+<!-- Informações de Localização -->
+<div class="info-localizacao">
+    <div class="item">
+        <i class="fas fa-map-pin"></i>
+        <span>Rua Minas Gerais, 1686 - Centro, Cascavel - PR</span>
+    </div>
+    <div class="item">
+        <i class="fas fa-phone"></i>
+        <a href="tel:4532242151">(45) 3224-2151</a>
+    </div>
+    <div class="item">
+        <i class="fab fa-whatsapp"></i>
+        <a href="https://wa.me/554532242151" target="_blank">(45) 9 9999-2151</a>
+    </div>
 </div>
-<p><i class="fas fa-location-dot"></i> Rua Minas Gerais, 1686 - Centro, Cascavel - PR, 85812-010</p>
-<p><i class="fas fa-phone"></i> (45) 3224-2151</p>
-<p><i class="fab fa-whatsapp"></i> WhatsApp: (45) 9 9999-2151</p>
-<div class="mapa-container"><iframe style="width: 100%; height: 100%; border: 0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.123456789012!2d-53.456789!3d-24.957890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDU3JzI4LjQiUyA1M8KwMjcnMjQuNCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890" allowfullscreen="allowfullscreen" loading="lazy"></iframe></div>
+
+<!-- Mapa -->
+<div class="mapa-container">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.456789012345!2d-53.456789012345!3d-24.957890123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94f3f7a123456789%3A0x987654321abcdef0!2sRua%20Minas%20Gerais%2C%201686%20-%20Centro%2C%20Cascavel%20-%20PR%2C%2085812-010!5e0!3m2!1spt-BR!2sbr!4v1700000000000" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
 </div>
-<p style="text-align: center; margin-top: 25px; font-weight: 500;">🗓️ Atendimento mediante agendamento – segunda a sexta, 8h às 18h.</p>
+
+<!-- Botão Abrir no Google Maps -->
+<div style="text-align: center; margin-top: 15px;">
+    <a href="https://www.google.com/maps/dir//Rua+Minas+Gerais,+1686+-+Centro,+Cascavel+-+PR,+85812-010/@-24.957890,-53.456789,17z" 
+       target="_blank" 
+       class="btn-maps">
+        <i class="fas fa-map-marker-alt"></i> Abrir no Google Maps
+    </a>
+</div>
+
+<!-- Horário de funcionamento -->
+<div style="text-align: center; margin-top: 20px; padding: 15px; background: var(--branco); border-radius: 16px; border: 2px solid var(--preto);">
+    <p style="font-weight: 600; margin-bottom: 5px;">
+        <i class="fas fa-clock" style="color: var(--purpura);"></i> Horário de Atendimento
+    </p>
+    <p style="font-size: 0.9rem; color: var(--cinza-medio);">
+        Segunda a Sexta: 8h às 18h | Sábado: 8h às 12h (mediante agendamento)
+    </p>
+    <p style="font-size: 0.85rem; margin-top: 8px; font-weight: 500;">
+        <i class="fas fa-calendar-check" style="color: var(--verde-destaque);"></i> Atendimento mediante agendamento
+    </p>
+</div>
+
 </div>
 <footer>
 <p><i class="fas fa-brain"></i> CENTRO CLIVATI – NEUROLOGIA DA INFÂNCIA E DA ADOLESCÊNCIA</p>
@@ -861,6 +1449,300 @@
         document.getElementById('contact-form').reset();
         setTimeout(() => statusBox.style.display = "none", 6000);
     }
+
+    // ========== CARROSSEL MINIATURAS COM AUTOPLAY ==========
+    (function() {
+        const track = document.getElementById('thumbTrack');
+        const items = track.querySelectorAll('.carrossel-thumb-item');
+        const prevBtn = document.getElementById('thumbPrev');
+        const nextBtn = document.getElementById('thumbNext');
+        const totalItems = items.length;
+        let currentIndex = 0;
+        let itemsPerView = 6;
+        let itemWidth = 0;
+        let gap = 12;
+        let autoplayInterval = null;
+        let isAutoplayRunning = true;
+        const autoplayDelay = 3000;
+
+        const progressContainer = document.getElementById('progressoIndicadores');
+
+        // Criar indicadores de progresso
+        for (let i = 0; i < totalItems; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'dot' + (i === 0 ? ' ativo' : '');
+            dot.dataset.index = i;
+            dot.addEventListener('click', function() {
+                goToSlide(parseInt(this.dataset.index));
+                resetAutoplay();
+            });
+            progressContainer.appendChild(dot);
+        }
+
+        const dots = progressContainer.querySelectorAll('.dot');
+
+        function updateItemsPerView() {
+            const width = window.innerWidth;
+            if (width < 480) {
+                itemsPerView = 2;
+            } else if (width < 768) {
+                itemsPerView = 3;
+            } else if (width < 1024) {
+                itemsPerView = 4;
+            } else {
+                itemsPerView = 6;
+            }
+        }
+
+        function getItemWidth() {
+            const wrapperWidth = document.getElementById('thumbWrapper').clientWidth - 20;
+            const gapTotal = (itemsPerView - 1) * gap;
+            return (wrapperWidth - gapTotal) / itemsPerView;
+        }
+
+        function getMaxIndex() {
+            return Math.max(0, totalItems - itemsPerView);
+        }
+
+        function goToSlide(index) {
+            const maxIndex = getMaxIndex();
+            if (index < 0) index = 0;
+            if (index > maxIndex) index = maxIndex;
+            currentIndex = index;
+            const offset = -currentIndex * (itemWidth + gap);
+            track.style.transform = `translateX(${offset}px)`;
+            updateButtons();
+            updateDots();
+            updateActiveItem();
+        }
+
+        function updateButtons() {
+            const maxIndex = getMaxIndex();
+            prevBtn.style.display = currentIndex > 0 ? 'flex' : 'none';
+            nextBtn.style.display = currentIndex < maxIndex ? 'flex' : 'none';
+        }
+
+        function updateDots() {
+            const maxIndex = getMaxIndex();
+            const start = currentIndex;
+            const end = Math.min(currentIndex + itemsPerView, totalItems);
+            
+            dots.forEach((dot, i) => {
+                dot.classList.remove('ativo', 'passou');
+                if (i >= start && i < end) {
+                    dot.classList.add('ativo');
+                } else if (i < start) {
+                    dot.classList.add('passou');
+                }
+            });
+        }
+
+        function updateActiveItem() {
+            items.forEach((item, i) => {
+                item.classList.toggle('ativo', i === currentIndex);
+            });
+        }
+
+        function updateDimensions() {
+            updateItemsPerView();
+            itemWidth = getItemWidth();
+            items.forEach(item => {
+                item.style.flex = `0 0 ${itemWidth}px`;
+                item.style.minWidth = `${itemWidth}px`;
+            });
+            // Reset position
+            currentIndex = 0;
+            goToSlide(0);
+        }
+
+        function nextSlide() {
+            const maxIndex = getMaxIndex();
+            if (currentIndex >= maxIndex) {
+                goToSlide(0);
+            } else {
+                goToSlide(currentIndex + 1);
+            }
+        }
+
+        function startAutoplay() {
+            if (autoplayInterval) clearInterval(autoplayInterval);
+            if (!isAutoplayRunning) return;
+            autoplayInterval = setInterval(nextSlide, autoplayDelay);
+            updateAutoplayUI();
+        }
+
+        function stopAutoplay() {
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+                autoplayInterval = null;
+            }
+            updateAutoplayUI();
+        }
+
+        function toggleAutoplay() {
+            isAutoplayRunning = !isAutoplayRunning;
+            if (isAutoplayRunning) {
+                startAutoplay();
+            } else {
+                stopAutoplay();
+            }
+            updateAutoplayUI();
+        }
+
+        function resetAutoplay() {
+            if (isAutoplayRunning) {
+                stopAutoplay();
+                startAutoplay();
+            }
+        }
+
+        function updateAutoplayUI() {
+            const status = document.getElementById('autoplayStatus');
+            const icon = document.getElementById('autoplayIcon');
+            if (isAutoplayRunning) {
+                status.innerHTML = '<i class="fas fa-play"></i> Rodando';
+                icon.className = 'fas fa-pause';
+            } else {
+                status.innerHTML = '<i class="fas fa-pause"></i> Pausado';
+                icon.className = 'fas fa-play';
+            }
+        }
+
+        // Eventos dos botões
+        prevBtn.addEventListener('click', function() {
+            const maxIndex = getMaxIndex();
+            if (currentIndex > 0) {
+                goToSlide(currentIndex - 1);
+                resetAutoplay();
+            }
+        });
+
+        nextBtn.addEventListener('click', function() {
+            const maxIndex = getMaxIndex();
+            if (currentIndex < maxIndex) {
+                goToSlide(currentIndex + 1);
+                resetAutoplay();
+            } else {
+                goToSlide(0);
+                resetAutoplay();
+            }
+        });
+
+        // Toggle autoplay
+        document.getElementById('autoplayToggle').addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleAutoplay();
+        });
+
+        // Pausar autoplay quando o mouse estiver sobre o carrossel
+        const container = document.getElementById('carrosselContainer');
+        container.addEventListener('mouseenter', function() {
+            if (isAutoplayRunning) {
+                stopAutoplay();
+            }
+        });
+
+        container.addEventListener('mouseleave', function() {
+            if (isAutoplayRunning && !autoplayInterval) {
+                startAutoplay();
+            }
+        });
+
+        // Responsive
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function() {
+                updateDimensions();
+                if (isAutoplayRunning) {
+                    stopAutoplay();
+                    startAutoplay();
+                }
+            }, 250);
+        });
+
+        // Inicializar
+        updateDimensions();
+        startAutoplay();
+
+        // Expor para o modal
+        window.thumbItems = items;
+        window.totalThumbItems = totalItems;
+        window.thumbCurrentIndex = 0;
+
+    })();
+
+    // ========== MODAL ==========
+    let modalCurrentIndex = 0;
+    const totalModalItems = 21;
+
+    function openModal(index) {
+        modalCurrentIndex = index;
+        const modal = document.getElementById('carrosselModal');
+        const img = document.getElementById('modalImage');
+        const items = document.querySelectorAll('.carrossel-thumb-item');
+        const src = items[index].querySelector('img').src;
+        img.src = src;
+        modal.classList.add('ativo');
+        document.body.style.overflow = 'hidden';
+        updateModalCounter();
+        updateModalActiveThumb(index);
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('carrosselModal');
+        modal.classList.remove('ativo');
+        document.body.style.overflow = '';
+    }
+
+    // Função que fecha o modal ao clicar no fundo (background)
+    function closeModalOnBackground(event) {
+        // Só fecha se clicou diretamente no fundo (modal) e não em um elemento filho
+        if (event.target === event.currentTarget) {
+            closeModal();
+        }
+    }
+
+    function changeModalImage(direction) {
+        const newIndex = modalCurrentIndex + direction;
+        if (newIndex < 0 || newIndex >= totalModalItems) return;
+        modalCurrentIndex = newIndex;
+        const items = document.querySelectorAll('.carrossel-thumb-item');
+        const img = document.getElementById('modalImage');
+        const src = items[modalCurrentIndex].querySelector('img').src;
+        img.src = src;
+        updateModalCounter();
+        updateModalActiveThumb(modalCurrentIndex);
+        // Atualizar também o destaque no carrossel de miniaturas
+        const thumbItems = document.querySelectorAll('.carrossel-thumb-item');
+        thumbItems.forEach((item, i) => {
+            item.classList.toggle('ativo', i === modalCurrentIndex);
+        });
+    }
+
+    function updateModalCounter() {
+        document.getElementById('modalCounter').textContent = `${modalCurrentIndex + 1} / ${totalModalItems}`;
+    }
+
+    function updateModalActiveThumb(index) {
+        const thumbItems = document.querySelectorAll('.carrossel-thumb-item');
+        thumbItems.forEach((item, i) => {
+            item.classList.toggle('ativo', i === index);
+        });
+    }
+
+    // Teclas para navegação no modal
+    document.addEventListener('keydown', function(e) {
+        const modal = document.getElementById('carrosselModal');
+        if (!modal.classList.contains('ativo')) return;
+        if (e.key === 'Escape') {
+            closeModal();
+        } else if (e.key === 'ArrowLeft') {
+            changeModalImage(-1);
+        } else if (e.key === 'ArrowRight') {
+            changeModalImage(1);
+        }
+    });
 
     // Inicializa a página
     window.switchPage('inicio');
